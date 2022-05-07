@@ -1,3 +1,21 @@
 <resources>
-    <string name="app_name">product_management</string>
+    <string name="app_name">Product Management</string>
+
+    <string name="loading_message">Loading</string>
+
+    <string name="signin_label">Welcome</string>
+    <string name="signin_email">Email</string>
+    <string name="signin_password">Password</string>
+    <string name="signin_button">Sign in</string>
+    <string name="signin_create_account">I don\'t have an account</string>
+
+    <string name="signup_label">Create account</string>
+    <string name="signup_store_name">Store Name</string>
+    <string name="signup_email">Email</string>
+    <string name="signup_cnpj">CNPJ</string>
+    <string name="signup_password">Password</string>
+    <string name="signup_confirm_password">Confirm Password</string>
+    <string name="signup_button">Sign up</string>
+
+    <string name="home_store_name"></string>
 </resources>

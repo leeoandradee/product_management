@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/login_nav_graph"
+    app:startDestination="@id/signinFragment">
+
+    <fragment
+        tools:layout="@layout/fragment_signin"
+        android:id="@+id/signinFragment"
+        android:name="br.com.fiap.product_management.presentation.signin.SigninFragment"
+        android:label="SigninFragment" >
+        <action
+            android:id="@+id/action_signinFragment_to_signupFragment"
+            app:destination="@id/signupFragment" />
+    </fragment>
+
+    <fragment
+        tools:layout="@layout/fragment_signup"
+        android:id="@+id/signupFragment"
+        android:name="br.com.fiap.product_management.presentation.signup.SignupFragment"
+        android:label="SignupFragment" >
+    </fragment>
+</navigation>
