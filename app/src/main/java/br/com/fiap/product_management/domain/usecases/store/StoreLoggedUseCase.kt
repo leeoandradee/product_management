@@ -1,4 +1,4 @@
-package br.com.fiap.product_management.domain.usecases.product
+package br.com.fiap.product_management.domain.usecases.store
 
 import br.com.fiap.product_management.domain.entity.RequestState
 import br.com.fiap.product_management.domain.entity.store.Store

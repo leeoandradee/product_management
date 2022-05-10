@@ -5,9 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.fiap.product_management.domain.entity.RequestState
 import br.com.fiap.product_management.domain.entity.store.Store
-import br.com.fiap.product_management.domain.entity.store.StoreSignIn
-import br.com.fiap.product_management.domain.entity.store.StoreSignUp
-import br.com.fiap.product_management.domain.usecases.product.StoreLoggedUseCase
+import br.com.fiap.product_management.domain.usecases.store.StoreLoggedUseCase
 import kotlinx.coroutines.launch
 
 class HomeViewModel (

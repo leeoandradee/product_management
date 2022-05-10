@@ -11,7 +11,7 @@ import br.com.fiap.product_management.R
 import br.com.fiap.product_management.data.remote.datasource.store.impl.StoreRemoteDataSourceImpl
 import br.com.fiap.product_management.data.repository.StoreRepositoryImpl
 import br.com.fiap.product_management.domain.entity.RequestState
-import br.com.fiap.product_management.domain.usecases.product.StoreSignInUseCase
+import br.com.fiap.product_management.domain.usecases.store.StoreSignInUseCase
 import br.com.fiap.product_management.presentation.base.BaseFragment
 import br.com.fiap.product_management.presentation.base.auth.NAVIGATION_KEY
 import com.google.android.material.button.MaterialButton

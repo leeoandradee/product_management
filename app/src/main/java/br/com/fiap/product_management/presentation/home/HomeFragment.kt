@@ -6,15 +6,12 @@ import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import br.com.fiap.product_management.R
 import br.com.fiap.product_management.data.remote.datasource.store.impl.StoreRemoteDataSourceImpl
 import br.com.fiap.product_management.data.repository.StoreRepositoryImpl
 import br.com.fiap.product_management.domain.entity.RequestState
-import br.com.fiap.product_management.domain.usecases.product.StoreLoggedUseCase
-import br.com.fiap.product_management.domain.usecases.product.StoreSignUpUseCase
+import br.com.fiap.product_management.domain.usecases.store.StoreLoggedUseCase
 import br.com.fiap.product_management.presentation.base.auth.BaseAuthFragment
-import br.com.fiap.product_management.presentation.base.auth.NAVIGATION_KEY
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase

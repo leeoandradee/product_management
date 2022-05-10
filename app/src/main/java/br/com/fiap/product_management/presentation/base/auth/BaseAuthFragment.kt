@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import br.com.fiap.product_management.data.remote.datasource.store.impl.StoreRemoteDataSourceImpl
 import br.com.fiap.product_management.data.repository.StoreRepositoryImpl
 import br.com.fiap.product_management.domain.entity.RequestState
-import br.com.fiap.product_management.domain.usecases.product.StoreLoggedUseCase
+import br.com.fiap.product_management.domain.usecases.store.StoreLoggedUseCase
 import br.com.fiap.product_management.presentation.base.BaseFragment
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import androidx.navigation.fragment.NavHostFragment.Companion.findNavController

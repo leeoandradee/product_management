@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import br.com.fiap.product_management.domain.entity.RequestState
 import br.com.fiap.product_management.domain.entity.store.Store
 import br.com.fiap.product_management.domain.entity.store.StoreSignIn
-import br.com.fiap.product_management.domain.usecases.product.StoreSignInUseCase
+import br.com.fiap.product_management.domain.usecases.store.StoreSignInUseCase
 import kotlinx.coroutines.launch
 
 class SigninViewModel(

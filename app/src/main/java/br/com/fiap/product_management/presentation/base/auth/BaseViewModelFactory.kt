@@ -2,7 +2,7 @@ package br.com.fiap.product_management.presentation.base.auth
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import br.com.fiap.product_management.domain.usecases.product.StoreLoggedUseCase
+import br.com.fiap.product_management.domain.usecases.store.StoreLoggedUseCase
 
 class BaseViewModelFactory(
     private val storeLoggedUseCase: StoreLoggedUseCase
