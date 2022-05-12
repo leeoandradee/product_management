@@ -19,12 +19,9 @@ class ProductRemoteDataSourceImpl (
             val productList = firebaseFirestore.collection("products")
                 .get()
                 .await()
-                .toObjects(ProductDocument::class.java)
+                .toObjects(Product::class.java)
 
             RequestState.Success(productList)
-
-            val products = mutableListOf<Product>()
-            RequestState.Success(products)
         } catch (e: Exception) {
             RequestState.Error(e)
         }

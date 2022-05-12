@@ -59,7 +59,7 @@ class SigninFragment : BaseFragment() {
         tvLoginCreateAccount= view.findViewById(R.id.tvLoginCreateAccount)
 
         btSignIn.setOnClickListener {
-            signinViewModel.signup(etSignInEmail.text.toString(), etSignInPassword.text.toString())
+            signinViewModel.signin(etSignInEmail.text.toString(), etSignInPassword.text.toString())
         }
 
         tvLoginCreateAccount.setOnClickListener {

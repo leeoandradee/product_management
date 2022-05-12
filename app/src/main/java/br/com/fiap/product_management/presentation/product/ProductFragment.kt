@@ -2,6 +2,7 @@ package br.com.fiap.product_management.presentation.product
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -66,6 +67,7 @@ class ProductFragment  : BaseAuthFragment() {
         ).get(ProductViewModel::class.java)
     }
 
+    private lateinit var ivProductBackButton: ImageView
     private lateinit var etProductName: TextInputEditText
     private lateinit var etProductPrice: TextInputEditText
     private lateinit var etProductAmount: TextInputEditText
@@ -78,10 +80,20 @@ class ProductFragment  : BaseAuthFragment() {
     }
 
     private fun setUpViewListeners(view: View) {
+        ivProductBackButton = view.findViewById(R.id.ivProductBackButton)
         etProductName = view.findViewById(R.id.etProductName)
         etProductPrice = view.findViewById(R.id.etProductPrice)
         etProductAmount = view.findViewById(R.id.etProductAmount)
         btProductAdd = view.findViewById(R.id.btProductAdd)
+
+        ivProductBackButton.setOnClickListener {
+            val navIdForArguments = arguments?.getInt(NAVIGATION_KEY)
+            if (navIdForArguments == null) {
+                findNavController().navigate(R.id.main_nav_graph)
+            } else {
+                findNavController().popBackStack(navIdForArguments, false)
+            }
+        }
 
         btProductAdd.setOnClickListener {
             productViewModel.createProduct(

@@ -14,7 +14,7 @@ class SigninViewModel(
 ) : ViewModel() {
     val signinStoreState = MutableLiveData<RequestState<Store>>()
 
-    fun signup(name: String, password: String) {
+    fun signin(name: String, password: String) {
         viewModelScope.launch {
             signinStoreState.value = storeSignInUseCase.signIn(
                 StoreSignIn(

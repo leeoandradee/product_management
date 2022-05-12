@@ -7,6 +7,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.fiap.product_management.R
 import br.com.fiap.product_management.data.remote.datasource.product.impl.ProductRemoteDataSourceImpl
