@@ -5,7 +5,7 @@ import br.com.fiap.product_management.domain.entity.product.Product
 
 interface ProductRemoteDataSource {
 
-    suspend fun getProducts(): RequestState<MutableList<Product>>
+    suspend fun getProducts(): RequestState<List<Product>>
 
     suspend fun createProduct(product: Product): RequestState<Product>
 

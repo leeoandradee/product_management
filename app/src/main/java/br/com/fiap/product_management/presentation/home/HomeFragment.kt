@@ -6,12 +6,19 @@ import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import br.com.fiap.product_management.R
+import br.com.fiap.product_management.data.remote.datasource.product.impl.ProductRemoteDataSourceImpl
 import br.com.fiap.product_management.data.remote.datasource.store.impl.StoreRemoteDataSourceImpl
+import br.com.fiap.product_management.data.repository.ProductRepositoryImpl
 import br.com.fiap.product_management.data.repository.StoreRepositoryImpl
 import br.com.fiap.product_management.domain.entity.RequestState
+import br.com.fiap.product_management.domain.entity.product.Product
+import br.com.fiap.product_management.domain.usecases.product.ProductListUseCase
 import br.com.fiap.product_management.domain.usecases.store.StoreLoggedUseCase
 import br.com.fiap.product_management.presentation.base.auth.BaseAuthFragment
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -32,12 +39,21 @@ class HomeFragment : BaseAuthFragment() {
                             Firebase.firestore
                         )
                     )
-                )
+                ),
+                ProductListUseCase(
+                    ProductRepositoryImpl(
+                        ProductRemoteDataSourceImpl(
+                            Firebase.firestore
+                        )
+                    )
+                ),
             )
         ).get(HomeViewModel::class.java)
     }
 
     private lateinit var tvHomeStoreName: TextView
+    private lateinit var btHomeProductAdd: FloatingActionButton
+    private lateinit var rvHomeProductList: RecyclerView
 
     override fun onViewCreated (view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -45,10 +61,17 @@ class HomeFragment : BaseAuthFragment() {
         registerObserver()
         setUpViewListeners(view)
         homeViewModel.getStoreLoggedIn()
+        homeViewModel.getProductList()
     }
 
     private fun setUpViewListeners(view: View) {
         tvHomeStoreName = view.findViewById(R.id.tvHomeStoreName)
+        btHomeProductAdd = view.findViewById(R.id.btHomeProductAdd)
+        rvHomeProductList = view.findViewById(R.id.rvHomeProductList)
+
+        btHomeProductAdd.setOnClickListener {
+            findNavController().navigate(R.id.productFragment, null, null)
+        }
     }
 
     private fun registerObserver() {
@@ -65,6 +88,20 @@ class HomeFragment : BaseAuthFragment() {
                 is RequestState.Loading -> showLoading("carregando dados do usuário")
             }
         })
+
+        this.homeViewModel.productList.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is RequestState.Success -> {
+                    hideLoading()
+                    setProductList(it.data)
+                }
+                is RequestState.Error -> {
+                    hideLoading()
+                    showMessage(it.throwable.message)
+                }
+                is RequestState.Loading -> showLoading()
+            }
+        })
     }
 
 
@@ -75,6 +112,14 @@ class HomeFragment : BaseAuthFragment() {
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+    }
+
+    private fun setProductList(items: List<Product>) {
+        rvHomeProductList.adapter = HomeAdapter(items, this::clickItem)
+    }
+
+    private fun clickItem(item: Product) {
+
     }
 
 }

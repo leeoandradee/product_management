@@ -7,6 +7,6 @@ import br.com.fiap.product_management.domain.repository.ProductRepository
 class ProductListUseCase(
     private val productRepository: ProductRepository
 ) {
-    suspend fun listProducts(): RequestState<MutableList<Product>> =
+    suspend fun listProducts(): RequestState<List<Product>> =
         productRepository.getProducts()
 }

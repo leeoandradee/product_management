@@ -3,6 +3,7 @@ package br.com.fiap.product_management.data.remote.datasource.product.impl
 import br.com.fiap.product_management.data.remote.datasource.product.ProductRemoteDataSource
 import br.com.fiap.product_management.domain.entity.RequestState
 import br.com.fiap.product_management.domain.entity.product.Product
+import br.com.fiap.product_management.domain.entity.product.ProductDocument
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.tasks.await
@@ -12,8 +13,16 @@ class ProductRemoteDataSourceImpl (
     private val firebaseFirestore: FirebaseFirestore
         ): ProductRemoteDataSource {
 
-    override suspend fun getProducts(): RequestState<MutableList<Product>> {
+    override suspend fun getProducts(): RequestState<List<Product>> {
         return try {
+
+            val productList = firebaseFirestore.collection("products")
+                .get()
+                .await()
+                .toObjects(ProductDocument::class.java)
+
+            RequestState.Success(productList)
+
             val products = mutableListOf<Product>()
             RequestState.Success(products)
         } catch (e: Exception) {
@@ -35,7 +44,7 @@ class ProductRemoteDataSourceImpl (
     override suspend fun updateProduct(product: Product): RequestState<Product> {
         return try {
             firebaseFirestore.collection("products")
-                .document(product.id)
+                .document(product.userId)
                 .set(product)
                 .await()
             RequestState.Success(product)
@@ -47,7 +56,7 @@ class ProductRemoteDataSourceImpl (
     override suspend fun deleteProduct(product: Product): RequestState<Boolean> {
         return try {
             firebaseFirestore.collection("products")
-                .document(product.id)
+                .document(product.userId)
                 .delete()
                 .await()
             RequestState.Success(true)

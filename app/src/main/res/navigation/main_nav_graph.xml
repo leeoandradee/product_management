@@ -11,6 +11,13 @@
         android:id="@+id/homeFragment"
         android:name="br.com.fiap.product_management.presentation.home.HomeFragment"
         android:label="HomeFragment" />
+
+    <fragment
+        tools:layout="@layout/fragment_product"
+        android:id="@+id/productFragment"
+        android:name="br.com.fiap.product_management.presentation.product.ProductFragment"
+        android:label="ProductFragment" />
+
     <include app:graph="@navigation/login_nav_graph" />
 
 </navigation>
