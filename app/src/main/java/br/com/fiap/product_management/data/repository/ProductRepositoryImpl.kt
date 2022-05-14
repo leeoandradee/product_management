@@ -8,6 +8,11 @@ import br.com.fiap.product_management.domain.repository.ProductRepository
 data class ProductRepositoryImpl (
         val productRemoteDataSource: ProductRemoteDataSource
 ): ProductRepository {
+
+        override suspend fun getProduct(id: String): RequestState<Product> {
+                return productRemoteDataSource.getProduct(id)
+        }
+
         override suspend fun getProducts(): RequestState<List<Product>> {
                 return productRemoteDataSource.getProducts()
         }

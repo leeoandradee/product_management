@@ -36,6 +36,14 @@ class ProductFragment  : BaseAuthFragment() {
             this,
             ProductViewModelFactory(
                 ProductCreateUserCase(
+                    StoreLoggedUseCase(
+                        StoreRepositoryImpl(
+                            StoreRemoteDataSourceImpl(
+                                Firebase.auth,
+                                Firebase.firestore
+                            )
+                        )
+                    ),
                     ProductRepositoryImpl(
                         ProductRemoteDataSourceImpl(
                             Firebase.firestore

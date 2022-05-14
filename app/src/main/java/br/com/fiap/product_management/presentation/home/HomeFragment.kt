@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -23,6 +24,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+
 
 class HomeFragment : BaseAuthFragment() {
 
@@ -120,7 +122,8 @@ class HomeFragment : BaseAuthFragment() {
     }
 
     private fun clickItem(item: Product) {
-
+        val bundle = bundleOf("productId" to item.id)
+        findNavController().navigate(R.id.productDetailsFragment, bundle, null)
     }
 
 }

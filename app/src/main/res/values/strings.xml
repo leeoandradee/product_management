@@ -23,5 +23,11 @@
     <string name="product_amount">Amount</string>
     <string name="product_create_button">Register</string>
 
+    <string name="product_details_label">Product Details</string>
+    <string name="product_details_label_name">Name</string>
+    <string name="product_details_label_price">Price</string>
+    <string name="product_details_label_amount">Amount</string>
+    <string name="product_details_delete_button">delete product</string>
+
     <string name="home_store_name"></string>
 </resources>

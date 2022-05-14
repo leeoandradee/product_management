@@ -3,7 +3,6 @@ package br.com.fiap.product_management.data.remote.datasource.product.impl
 import br.com.fiap.product_management.data.remote.datasource.product.ProductRemoteDataSource
 import br.com.fiap.product_management.domain.entity.RequestState
 import br.com.fiap.product_management.domain.entity.product.Product
-import br.com.fiap.product_management.domain.entity.product.ProductDocument
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.tasks.await
@@ -12,6 +11,24 @@ import kotlinx.coroutines.tasks.await
 class ProductRemoteDataSourceImpl (
     private val firebaseFirestore: FirebaseFirestore
         ): ProductRemoteDataSource {
+
+    override suspend fun getProduct(id: String): RequestState<Product> {
+        return try {
+
+            val product = firebaseFirestore.collection("products")
+                .document(id)
+                .get()
+                .await()
+                .toObject(Product::class.java)
+
+            if(product == null)
+                RequestState.Error(Exception("Product not found"))
+            else
+                RequestState.Success(product)
+        } catch (e: Exception) {
+            RequestState.Error(e)
+        }
+    }
 
     override suspend fun getProducts(): RequestState<List<Product>> {
         return try {
@@ -30,7 +47,8 @@ class ProductRemoteDataSourceImpl (
     override suspend fun createProduct(product: Product): RequestState<Product> {
         return try {
             firebaseFirestore.collection("products")
-                .add(product)
+                .document(product.id)
+                .set(product)
                 .await()
             RequestState.Success(product)
         } catch (e: Exception) {
@@ -41,7 +59,7 @@ class ProductRemoteDataSourceImpl (
     override suspend fun updateProduct(product: Product): RequestState<Product> {
         return try {
             firebaseFirestore.collection("products")
-                .document(product.userId)
+                .document(product.id)
                 .set(product)
                 .await()
             RequestState.Success(product)
@@ -53,7 +71,7 @@ class ProductRemoteDataSourceImpl (
     override suspend fun deleteProduct(product: Product): RequestState<Boolean> {
         return try {
             firebaseFirestore.collection("products")
-                .document(product.userId)
+                .document(product.id)
                 .delete()
                 .await()
             RequestState.Success(true)
