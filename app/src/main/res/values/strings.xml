@@ -29,5 +29,18 @@
     <string name="product_details_label_amount">Amount</string>
     <string name="product_details_delete_button">delete product</string>
 
+    <string name="product_update_label">Edit product</string>
+    <string name="product_update_name">Name</string>
+    <string name="product_update_price">Price</string>
+    <string name="product_update_amount">Amount</string>
+    <string name="product_update_button">Update</string>
+
+    <string name="about_label">About</string>
+    <string name="about_dev_label">Developers</string>
+    <string name="about_dev_value_1">Leonardo Andrade dos Santos</string>
+    <string name="about_dev_value_2">Matheus Tadeu</string>
+    <string name="about_version_label">App version</string>
+    <string name="about_version_value">1.0.0</string>
+
     <string name="home_store_name"></string>
 </resources>

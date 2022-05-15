@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/ivProductBackButton"
+        android:id="@+id/ivProductUpdateBackButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -22,14 +22,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
-        android:text="@string/product_label"
+        android:text="@string/product_update_label"
         android:textColor="#333333"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/ivProductBackButton"
+        app:layout_constraintStart_toEndOf="@+id/ivProductUpdateBackButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/containerProduct"
+        android:id="@+id/containerProductUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -42,51 +42,51 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
-            android:hint="@string/product_name"
+            android:hint="@string/product_update_name"
             app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etProductName"
+                android:id="@+id/etProductUpdateName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/blackColor" />
+                android:textColorHint="#000000" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
-            android:hint="@string/product_price"
+            android:hint="@string/product_update_price"
             app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etProductPrice"
+                android:id="@+id/etProductUpdatePrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/blackColor" />
+                android:textColorHint="#000000" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
-            android:hint="@string/product_amount"
+            android:hint="@string/product_update_amount"
             app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etProductAmount"
+                android:id="@+id/etProductUpdateAmount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/blackColor" />
+                android:textColorHint="#000000" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btProductAdd"
+            android:id="@+id/btProductUpdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:text="@string/product_create_button" />
+            android:text="@string/product_update_button" />
 
     </LinearLayout>
 

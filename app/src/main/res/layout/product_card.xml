@@ -15,21 +15,32 @@
         app:cardElevation="0dp">
         >
         <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             >
-    <TextView
-        android:textColor="#000000"
-        android:id="@+id/tvProductName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Teste"
-        />
+                <TextView
+                    android:textColor="#000000"
+                    android:id="@+id/tvProductName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Teste"
+                    />
+
+                <ImageView
+                    android:id="@+id/ivUpdateProduct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@android:drawable/ic_menu_edit" />
+
+                <ImageView
+                    android:id="@+id/ivDeleteProduct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@android:drawable/ic_menu_delete" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 </LinearLayout>

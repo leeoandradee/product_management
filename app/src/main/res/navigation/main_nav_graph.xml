@@ -7,6 +7,12 @@
     >
 
     <fragment
+        tools:layout="@layout/fragment_about"
+        android:id="@+id/aboutFragment"
+        android:name="br.com.fiap.product_management.presentation.about.AboutFragment"
+        android:label="AboutFragment" />
+
+    <fragment
         tools:layout="@layout/fragment_home"
         android:id="@+id/homeFragment"
         android:name="br.com.fiap.product_management.presentation.home.HomeFragment"
@@ -27,7 +33,19 @@
         <argument
             android:name="productId"
             app:argType="string"
-            android:defaultValue="http://www.product_management.com.br"/>
+            android:defaultValue="http://www.product_management.com.br/productDetails"/>
+    </fragment>
+
+    <fragment
+        tools:layout="@layout/fragment_product_update"
+        android:id="@+id/productUpdateFragment"
+        android:name="br.com.fiap.product_management.presentation.product_update.ProductUpdateFragment"
+        android:label="ProductUpdateFragment">
+
+        <argument
+            android:name="productId"
+            app:argType="string"
+            android:defaultValue="http://www.product_management.com.br/productUpdate"/>
     </fragment>
 
     <include app:graph="@navigation/login_nav_graph" />

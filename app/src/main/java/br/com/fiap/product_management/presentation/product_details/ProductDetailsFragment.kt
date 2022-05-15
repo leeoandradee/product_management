@@ -100,6 +100,7 @@ class ProductDetailsFragment : BaseAuthFragment() {
                     is RequestState.Success -> {
                         val deleted = it.data
                         if (deleted) {
+                            showMessage("Product deleted")
                             findNavController().popBackStack()
                         } else {
                             showMessage("Error to delete product")

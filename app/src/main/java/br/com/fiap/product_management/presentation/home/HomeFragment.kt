@@ -2,6 +2,7 @@ package br.com.fiap.product_management.presentation.home
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.core.os.bundleOf
@@ -57,6 +58,8 @@ class HomeFragment : BaseAuthFragment() {
     private lateinit var tvHomeStoreName: TextView
     private lateinit var btHomeProductAdd: FloatingActionButton
     private lateinit var rvHomeProductList: RecyclerView
+    private lateinit var ivAbout: ImageView
+
 
     override fun onViewCreated (view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -71,9 +74,14 @@ class HomeFragment : BaseAuthFragment() {
         tvHomeStoreName = view.findViewById(R.id.tvHomeStoreName)
         btHomeProductAdd = view.findViewById(R.id.btHomeProductAdd)
         rvHomeProductList = view.findViewById(R.id.rvHomeProductList)
+        ivAbout = view.findViewById(R.id.ivAbout)
 
         btHomeProductAdd.setOnClickListener {
             findNavController().navigate(R.id.productFragment, null, null)
+        }
+
+        ivAbout.setOnClickListener {
+            findNavController().navigate(R.id.aboutFragment, null, null)
         }
     }
 
@@ -122,8 +130,7 @@ class HomeFragment : BaseAuthFragment() {
     }
 
     private fun clickItem(item: Product) {
-        val bundle = bundleOf("productId" to item.id)
-        findNavController().navigate(R.id.productDetailsFragment, bundle, null)
+
     }
 
 }

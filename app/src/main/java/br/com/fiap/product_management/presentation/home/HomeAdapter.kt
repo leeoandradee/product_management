@@ -3,7 +3,11 @@ package br.com.fiap.product_management.presentation.home
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.os.bundleOf
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import br.com.fiap.product_management.R
 import br.com.fiap.product_management.domain.entity.product.Product
@@ -30,8 +34,22 @@ class HomeAdapter(
 
         fun bind(item: Product, clickListener: (Product) -> Unit) {
             val label = itemView.findViewById<TextView>(R.id.tvProductName)
+            val updateButton = itemView.findViewById<ImageView>(R.id.ivUpdateProduct)
+            val deleteButton = itemView.findViewById<ImageView>(R.id.ivDeleteProduct)
 
             label.text = item.name
+
+            updateButton.setOnClickListener {
+                val bundle = bundleOf("productId" to item.id)
+                val navController = Navigation.findNavController(itemView)
+                navController!!.navigate(R.id.productUpdateFragment, bundle, null)
+            }
+
+            deleteButton.setOnClickListener {
+                val bundle = bundleOf("productId" to item.id)
+                val navController = Navigation.findNavController(itemView)
+                navController!!.navigate(R.id.productDetailsFragment, bundle, null)
+            }
 
             itemView.setOnClickListener { clickListener(item) }
         }
