@@ -38,6 +38,15 @@ class StoreRemoteDataSourceImpl (
         }
     }
 
+    override suspend fun logout(): RequestState<Boolean> {
+        return try {
+            firebaseAuth.signOut()
+            RequestState.Success(true);
+        } catch (e: java.lang.Exception) {
+            RequestState.Error(e)
+        }
+    }
+
     override suspend fun signIn(storeSignIn: StoreSignIn): RequestState<Store> {
         return try {
             firebaseAuth.signInWithEmailAndPassword(storeSignIn.email, storeSignIn.password).await()

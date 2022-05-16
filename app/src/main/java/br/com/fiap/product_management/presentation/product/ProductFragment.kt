@@ -1,9 +1,10 @@
 package br.com.fiap.product_management.presentation.product
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -20,8 +21,6 @@ import br.com.fiap.product_management.domain.usecases.product.ProductUpdateUserC
 import br.com.fiap.product_management.domain.usecases.store.StoreLoggedUseCase
 import br.com.fiap.product_management.presentation.base.auth.BaseAuthFragment
 import br.com.fiap.product_management.presentation.base.auth.NAVIGATION_KEY
-import br.com.fiap.product_management.presentation.home.HomeViewModel
-import br.com.fiap.product_management.presentation.home.HomeViewModelFactory
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.ktx.auth
@@ -94,6 +93,22 @@ class ProductFragment  : BaseAuthFragment() {
         etProductAmount = view.findViewById(R.id.etProductAmount)
         btProductAdd = view.findViewById(R.id.btProductAdd)
 
+        etProductPrice.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val text: String = s.toString()
+                if (text.contains(".") && text.substring(text.indexOf(".") + 1).length > 2) {
+                    etProductPrice.setText(text.substring(0, text.length - 1))
+                    etProductPrice.text?.let { etProductPrice.setSelection(it.length) }
+                }
+            }
+        })
+
         ivProductBackButton.setOnClickListener {
             val navIdForArguments = arguments?.getInt(NAVIGATION_KEY)
             if (navIdForArguments == null) {
@@ -118,6 +133,7 @@ class ProductFragment  : BaseAuthFragment() {
                 is RequestState.Success -> {
                     hideLoading()
                     val navIdForArguments = arguments?.getInt(NAVIGATION_KEY)
+                    showMessage(getString(R.string.toaster_product_created_succcess))
                     if (navIdForArguments == null) {
                         findNavController().navigate(R.id.main_nav_graph)
                     } else {
@@ -129,9 +145,8 @@ class ProductFragment  : BaseAuthFragment() {
                     etProductName.error = null
                     etProductPrice.error = null
                     etProductAmount.error = null
-                    showMessage(it.throwable.message)
+                    showMessage(getString(R.string.toaster_product_created_error))
                 }
-                is RequestState.Loading -> showLoading("Creating product")
             }
         })
     }

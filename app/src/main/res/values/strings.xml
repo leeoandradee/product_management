@@ -27,13 +27,13 @@
     <string name="product_details_label_name">Name</string>
     <string name="product_details_label_price">Price</string>
     <string name="product_details_label_amount">Amount</string>
-    <string name="product_details_delete_button">delete product</string>
+    <string name="product_details_delete_button">Delete product</string>
 
     <string name="product_update_label">Edit product</string>
     <string name="product_update_name">Name</string>
     <string name="product_update_price">Price</string>
     <string name="product_update_amount">Amount</string>
-    <string name="product_update_button">Update</string>
+    <string name="product_update_button">Update product</string>
 
     <string name="about_label">About</string>
     <string name="about_dev_label">Developers</string>
@@ -42,5 +42,10 @@
     <string name="about_version_label">App version</string>
     <string name="about_version_value">1.0.0</string>
 
-    <string name="home_store_name"></string>
+    <string name="toaster_product_created_succcess">Product was created</string>
+    <string name="toaster_product_created_error">Error to create product</string>
+    <string name="toaster_product_updated_succcess">Product was updated</string>
+    <string name="toaster_product_updated_error">Error to update product</string>
+    <string name="toaster_product_delete_succcess">Product was deleted</string>
+    <string name="toaster_product_delete_error">Error to delete product</string>
 </resources>

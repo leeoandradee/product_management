@@ -8,6 +8,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +21,7 @@ import br.com.fiap.product_management.domain.entity.RequestState
 import br.com.fiap.product_management.domain.entity.product.Product
 import br.com.fiap.product_management.domain.usecases.product.ProductListUseCase
 import br.com.fiap.product_management.domain.usecases.store.StoreLoggedUseCase
+import br.com.fiap.product_management.domain.usecases.store.StoreLogoutUseCase
 import br.com.fiap.product_management.presentation.base.auth.BaseAuthFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.ktx.auth
@@ -51,6 +53,14 @@ class HomeFragment : BaseAuthFragment() {
                         )
                     )
                 ),
+                StoreLogoutUseCase(
+                    StoreRepositoryImpl(
+                        StoreRemoteDataSourceImpl(
+                            Firebase.auth,
+                            Firebase.firestore
+                        )
+                    )
+                ),
             )
         ).get(HomeViewModel::class.java)
     }
@@ -59,6 +69,7 @@ class HomeFragment : BaseAuthFragment() {
     private lateinit var btHomeProductAdd: FloatingActionButton
     private lateinit var rvHomeProductList: RecyclerView
     private lateinit var ivAbout: ImageView
+    private lateinit var ivLogoutButton: ImageView
 
 
     override fun onViewCreated (view: View, savedInstanceState: Bundle?) {
@@ -75,6 +86,12 @@ class HomeFragment : BaseAuthFragment() {
         btHomeProductAdd = view.findViewById(R.id.btHomeProductAdd)
         rvHomeProductList = view.findViewById(R.id.rvHomeProductList)
         ivAbout = view.findViewById(R.id.ivAbout)
+        ivLogoutButton = view.findViewById(R.id.ivLogoutButton)
+
+        ivLogoutButton.setOnClickListener {
+            homeViewModel.logout()
+
+        }
 
         btHomeProductAdd.setOnClickListener {
             findNavController().navigate(R.id.productFragment, null, null)
@@ -111,6 +128,19 @@ class HomeFragment : BaseAuthFragment() {
                     showMessage(it.throwable.message)
                 }
                 is RequestState.Loading -> showLoading()
+            }
+        })
+
+        this.homeViewModel.storeLogout.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is RequestState.Success -> {
+                    NavHostFragment.findNavController(this)
+                        .navigate(R.id.login_nav_graph)
+                }
+                is RequestState.Error -> {
+                    hideLoading()
+                    showMessage(it.throwable.message)
+                }
             }
         })
     }

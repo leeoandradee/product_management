@@ -15,6 +15,10 @@ data class StoreRepositoryImpl(
         return storeRemoteDataSource.getStoreLogged()
     }
 
+    override suspend fun logout(): RequestState<Boolean> {
+        return storeRemoteDataSource.logout()
+    }
+
     override suspend fun signIn(storeSignIn: StoreSignIn): RequestState<Store> {
         return storeRemoteDataSource.signIn(storeSignIn)
     }

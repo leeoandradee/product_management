@@ -1,2 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">Gerenciador de Produtos</string>
+
+    <string name="loading_message">Carregando</string>
+
+    <string name="signin_label">Bem Vindo</string>
+    <string name="signin_email">Email</string>
+    <string name="signin_password">Senha</string>
+    <string name="signin_button">Entrar</string>
+    <string name="signin_create_account">I don\'t have an account</string>
+
+    <string name="signup_label">Criar conta</string>
+    <string name="signup_store_name">Nome da Loja</string>
+    <string name="signup_email">Email</string>
+    <string name="signup_cnpj">CNPJ</string>
+    <string name="signup_password">Senha</string>
+    <string name="signup_confirm_password">Confirmar senha</string>
+    <string name="signup_button">Cadastrar</string>
+
+    <string name="product_label">Adicionar novo produto</string>
+    <string name="product_name">Nome</string>
+    <string name="product_price">Preço</string>
+    <string name="product_amount">Quantidade</string>
+    <string name="product_create_button">Cadastrar</string>
+
+    <string name="product_details_label">Detalhes do produto</string>
+    <string name="product_details_label_name">Nome</string>
+    <string name="product_details_label_price">Preço</string>
+    <string name="product_details_label_amount">Quantidade</string>
+    <string name="product_details_delete_button">Deletar produto</string>
+
+    <string name="product_update_label">Editar produto</string>
+    <string name="product_update_name">Nome</string>
+    <string name="product_update_price">Preço</string>
+    <string name="product_update_amount">Quantidade</string>
+    <string name="product_update_button">Atualizar Produto</string>
+
+    <string name="about_label">Sobre</string>
+    <string name="about_dev_label">Desenvolvedores</string>
+    <string name="about_dev_value_1">Leonardo Andrade dos Santos</string>
+    <string name="about_dev_value_2">Matheus Tadeu</string>
+    <string name="about_version_label">App version</string>
+    <string name="about_version_value">1.0.0</string>
+
+    <string name="toaster_product_created_succcess">Produto foi criado</string>
+    <string name="toaster_product_created_error">erro ao criar produto</string>
+    <string name="toaster_product_updated_succcess">Produto foi atualizado</string>
+    <string name="toaster_product_updated_error">Erro ao atualizar produto</string>
+    <string name="toaster_product_delete_succcess">Produto foi deletado</string>
+    <string name="toaster_product_delete_error">Erro ao delete produto</string>
+
+</resources>

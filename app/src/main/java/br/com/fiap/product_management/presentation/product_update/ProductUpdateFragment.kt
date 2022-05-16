@@ -97,7 +97,6 @@ class ProductUpdateFragment : BaseAuthFragment() {
                         hideLoading()
                         showMessage(it.throwable.message)
                     }
-                    is RequestState.Loading -> showLoading("Loading product")
                 }
             }
         )
@@ -106,14 +105,13 @@ class ProductUpdateFragment : BaseAuthFragment() {
             viewLifecycleOwner, Observer {
                 when (it) {
                     is RequestState.Success -> {
-                        showMessage("Product updated!")
+                        showMessage(getString(R.string.toaster_product_updated_succcess))
                         findNavController().popBackStack()
                     }
                     is RequestState.Error -> {
                         hideLoading()
-                        showMessage(it.throwable.message)
+                        showMessage(getString(R.string.toaster_product_updated_error))
                     }
-                    is RequestState.Loading -> showLoading("Loading product")
                 }
             }
         )

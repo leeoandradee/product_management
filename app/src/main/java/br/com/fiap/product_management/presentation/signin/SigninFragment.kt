@@ -85,7 +85,6 @@ class SigninFragment : BaseFragment() {
                     etSignInPassword.error = null
                     showMessage(it.throwable.message)
                 }
-                is RequestState.Loading -> showLoading("Authenticating")
             }
         })
     }

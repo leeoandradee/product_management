@@ -81,7 +81,6 @@ class SignupFragment : BaseFragment() {
                     hideLoading()
                     showMessage(it.throwable.message)
                 }
-                is RequestState.Loading -> showLoading("Realizando a autenticação")
             }
         })
     }

@@ -90,7 +90,6 @@ class ProductDetailsFragment : BaseAuthFragment() {
                         hideLoading()
                         showMessage(it.throwable.message)
                     }
-                    is RequestState.Loading -> showLoading("Loading product")
                 }
             })
 
@@ -100,17 +99,16 @@ class ProductDetailsFragment : BaseAuthFragment() {
                     is RequestState.Success -> {
                         val deleted = it.data
                         if (deleted) {
-                            showMessage("Product deleted")
+                            showMessage(getString(R.string.toaster_product_delete_succcess))
                             findNavController().popBackStack()
                         } else {
-                            showMessage("Error to delete product")
+                            showMessage(getString(R.string.toaster_product_delete_error))
                         }
                     }
                     is RequestState.Error -> {
                         hideLoading()
                         showMessage(it.throwable.message)
                     }
-                    is RequestState.Loading -> showLoading("Deleting product")
                 }
             })
 

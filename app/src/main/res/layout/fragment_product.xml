@@ -23,7 +23,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
         android:text="@string/product_label"
-        android:textColor="#333333"
+        android:textColor="@color/greyColor"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/ivProductBackButton"
         app:layout_constraintTop_toTopOf="parent" />
@@ -63,6 +63,7 @@
                 android:id="@+id/etProductPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
                 android:textColor="@color/blackColor" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -77,6 +78,7 @@
                 android:id="@+id/etProductAmount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="number"
                 android:textColor="@color/blackColor" />
         </com.google.android.material.textfield.TextInputLayout>
 

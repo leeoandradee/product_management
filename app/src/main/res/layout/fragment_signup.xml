@@ -13,6 +13,7 @@
         android:layout_marginTop="32dp"
         android:textSize="24dp"
         android:text="@string/signup_label"
+        android:textColor="@color/greyColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,7 +38,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etSignupStoreName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="@color/blackColor"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -51,7 +54,11 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etSignupCnpj"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="14"
+                android:textColor="@color/blackColor"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -65,7 +72,10 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etSignupEmail"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/blackColor"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -80,6 +90,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
+                android:textColor="@color/blackColor"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -95,6 +106,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
+                android:textColor="@color/blackColor"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 

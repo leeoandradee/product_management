@@ -13,11 +13,11 @@ class StoreSignInUseCase(
     suspend fun signIn(storeSignIn: StoreSignIn): RequestState<Store> {
 
         if (storeSignIn.email.isBlank()) {
-            RequestState.Error(Exception("Email can't be empty"))
+            return RequestState.Error(Exception("Email can't be empty"))
         }
 
         if (storeSignIn.password.isBlank()) {
-            RequestState.Error(Exception("Password can't be empty"))
+            return RequestState.Error(Exception("Password can't be empty"))
         }
 
         return storeRepository.signIn(storeSignIn)

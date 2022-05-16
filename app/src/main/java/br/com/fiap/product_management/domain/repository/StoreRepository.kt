@@ -9,6 +9,8 @@ interface StoreRepository {
 
     suspend fun getStoreLogged(): RequestState<Store>
 
+    suspend fun logout(): RequestState<Boolean>
+
     suspend fun signIn(storeSignIn: StoreSignIn): RequestState<Store>
 
     suspend fun signUp(storeSignUp: StoreSignUp): RequestState<Store>

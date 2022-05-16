@@ -22,7 +22,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         android:text="@string/product_details_label"
-        android:textColor="#333333"
+        android:textColor="@color/greyColor"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/ivProductDetailsBackButton"
         app:layout_constraintTop_toTopOf="parent" />
@@ -34,7 +34,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="58dp"
         android:text="@string/product_details_label_name"
-        android:textColor="#000000"
+        android:textColor="@color/blackColor"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivProductDetailsBackButton" />
@@ -46,6 +46,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:text=""
+        android:textColor="@color/greyColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvProductDetailsLabelName" />
 
@@ -56,7 +57,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="36dp"
         android:text="@string/product_details_label_price"
-        android:textColor="#000000"
+        android:textColor="@color/blackColor"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvProductDetailsName" />
@@ -68,6 +69,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:text=""
+        android:textColor="@color/greyColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvProductDetailsLabelPrice" />
 
@@ -78,7 +80,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="36dp"
         android:text="@string/product_details_label_amount"
-        android:textColor="#000000"
+        android:textColor="@color/blackColor"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvProductDetailsPrice" />
@@ -90,19 +92,24 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:text=""
+        android:textColor="@color/greyColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvProductDetailsLabelAmount" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btProductDetailsDelete"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="60dp"
+        android:layout_marginEnd="20dp"
         android:text="@string/product_details_delete_button"
-        app:backgroundTint="@color/primaryColor"
-        app:layout_constraintTop_toBottomOf="@+id/tvProductDetailsAmount"
-        style="?attr/materialButtonOutlinedStyle"
-        tools:layout_editor_absoluteX="-16dp" />
+        android:textColor="@color/whiteColor"
+        app:backgroundTint="@color/blackColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvProductDetailsAmount" />
 </androidx.constraintlayout.widget.ConstraintLayout>
