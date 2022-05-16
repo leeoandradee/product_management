@@ -26,6 +26,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.text.NumberFormat
 
 class ProductFragment  : BaseAuthFragment() {
     override val layout = R.layout.fragment_product
@@ -93,7 +94,9 @@ class ProductFragment  : BaseAuthFragment() {
         etProductAmount = view.findViewById(R.id.etProductAmount)
         btProductAdd = view.findViewById(R.id.btProductAdd)
 
-        etProductPrice.addTextChangedListener(object : TextWatcher {
+        /*etProductPrice.addTextChangedListener(object : TextWatcher {
+            private var current = ""
+
             override fun afterTextChanged(s: Editable?) {
             }
 
@@ -101,13 +104,18 @@ class ProductFragment  : BaseAuthFragment() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val text: String = s.toString()
-                if (text.contains(".") && text.substring(text.indexOf(".") + 1).length > 2) {
-                    etProductPrice.setText(text.substring(0, text.length - 1))
-                    etProductPrice.text?.let { etProductPrice.setSelection(it.length) }
+                if (s.toString() != current) {
+                    etProductPrice.removeTextChangedListener(this)
+                    val cleanString = s.toString().replace("[R$,.]".toRegex(), "")
+                    val parsed = cleanString.toDouble()
+                    val formatted = NumberFormat.getCurrencyInstance().format(parsed / 100)
+                    current = formatted.replace("[R$]".toRegex(), "")
+                    etProductPrice.setText(current)
+                    etProductPrice.setSelection(current.length)
+                    etProductPrice.addTextChangedListener(this)
                 }
             }
-        })
+        })*/
 
         ivProductBackButton.setOnClickListener {
             val navIdForArguments = arguments?.getInt(NAVIGATION_KEY)

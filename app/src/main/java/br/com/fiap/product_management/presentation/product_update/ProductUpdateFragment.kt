@@ -2,6 +2,7 @@ package br.com.fiap.product_management.presentation.product_update
 
 import android.os.Bundle
 import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.ImageView
 import androidx.lifecycle.Observer
@@ -19,6 +20,7 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.text.NumberFormat
 
 class ProductUpdateFragment : BaseAuthFragment() {
     override val layout = R.layout.fragment_product_update
@@ -65,6 +67,29 @@ class ProductUpdateFragment : BaseAuthFragment() {
         etProductUpdatePrice = view.findViewById(R.id.etProductUpdatePrice)
         etProductUpdateAmount = view.findViewById(R.id.etProductUpdateAmount)
         btProductUpdate = view.findViewById(R.id.btProductUpdate)
+
+        /*etProductUpdatePrice.addTextChangedListener(object : TextWatcher {
+            private var current = ""
+
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (s.toString() != current) {
+                    etProductUpdatePrice.removeTextChangedListener(this)
+                    val cleanString = s.toString().replace("[R$.]".toRegex(), "")
+                    val parsed = cleanString.toDouble()
+                    val formatted = NumberFormat.getCurrencyInstance().format(parsed / 100)
+                    current = formatted.replace("[R$]".toRegex(), "")
+                    etProductUpdatePrice.setText(current)
+                    etProductUpdatePrice.setSelection(current.length)
+                    etProductUpdatePrice.addTextChangedListener(this)
+                }
+            }
+        })*/
 
         ivProductUpdateBackButton.setOnClickListener {
             findNavController().popBackStack()
